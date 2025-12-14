@@ -61,8 +61,8 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     try:
         # Gemini Modelini Hazırla
         genai.configure(api_key=api_key)
-        # Daha yüksek kotalı stabil model
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Listende kesin var olan model
+        model = genai.GenerativeModel('gemini-2.0-flash')
 
         # --- YAPAY ZEKA BEYNİ (SİSTEM MESAJI) ---
         system_prompt = f"""
@@ -124,4 +124,5 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
 
     except Exception as e:
         st.error(f"Bir hata oluştu. Lütfen sayfayı yenile. Hata detayı: {e}")
+
 
