@@ -61,14 +61,10 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
         # Gemini Ayarları
         genai.configure(api_key=api_key)
         
-        # --- MODEL SEÇİMİ (Tabloya Göre Güncellendi) ---
-        # SEÇİLEN MODEL: Gemma 3 27B Instruct
-        # NEDEN: Günlük 14.400 Mesaj hakkı var (Gemini'de sadece 20 idi).
-        # Ayrıca 27B parametre ile serisinin en akıllısı.
+        # --- MODEL SEÇİMİ ---
         model = genai.GenerativeModel('models/gemma-3-27b-it')
 
-        # SİSTEM TALİMATLARI (PROMPT) - GÜNCELLENDİ
-# SİSTEM TALİMATLARI (PROMPT) - ÖRNEKLİ (FEW-SHOT) VERSİYON
+        # --- SİSTEM TALİMATLARI (PROMPT) - ÖRNEKLİ (FEW-SHOT) VERSİYON ---
         system_prompt = f"""
         You are the AI assistant of Mustafa Cici. You answer questions based on the provided Data Source.
 
@@ -100,7 +96,8 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
         "{prompt}"
 
         ### YOUR ANSWER:
-        ""
+        """
+
         # CEVABI ÜRET VE İŞLE
         with st.chat_message("assistant"):
             with st.spinner("Mustafa'nın verileri taranıyor..."):
@@ -131,5 +128,3 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     except Exception as e:
         # Hata Yönetimi
         st.error(f"Bir hata oluştu. Lütfen sayfayı yenileyin. Hata detayı: {e}")
-
-
