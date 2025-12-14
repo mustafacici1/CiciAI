@@ -61,8 +61,11 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
         # Gemini Ayarları
         genai.configure(api_key=api_key)
         
-
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # --- MODEL SEÇİMİ (Tabloya Göre Güncellendi) ---
+        # SEÇİLEN MODEL: Gemma 3 27B Instruct
+        # NEDEN: Günlük 14.400 Mesaj hakkı var (Gemini'de sadece 20 idi).
+        # Ayrıca 27B parametre ile serisinin en akıllısı.
+        model = genai.GenerativeModel('models/gemma-3-27b-it')
 
         # SİSTEM TALİMATLARI (PROMPT)
         system_prompt = f"""
@@ -124,4 +127,3 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     except Exception as e:
         # Hata Yönetimi
         st.error(f"Bir hata oluştu. Lütfen sayfayı yenileyin. Hata detayı: {e}")
-
