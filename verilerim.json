@@ -1,0 +1,102 @@
+{
+  "identity": {
+    "fullName": "Mustafa Cici",
+    "age": 22,
+    "location": "Turkey"
+  },
+
+  "education": {
+    "university": "Dumlupınar Üniversitesi",
+    "department": "Bilgisayar Mühendisliği",
+    "gpa": 3.55,
+    "status": "Öğrenci"
+  },
+
+  "technicalSkills": {
+    "OpenGL": {
+      "level": "Orta / İleri",
+      "details": [
+        "Shadow mapping uygulamaları",
+        "3D sahne oluşturma",
+        "Akademik ve kişisel projelerde aktif kullanım"
+      ]
+    },
+
+    "Unity": {
+      "level": "Orta",
+      "details": [
+        "3D isometric oyun geliştirme",
+        "Oyun mekaniği ve temel optimizasyon",
+        "WebGPU tabanlı oyun geliştirme deneyimi"
+      ]
+    },
+
+    "Flutter": {
+      "level": "Orta",
+      "details": [
+        "Mobil uygulama geliştirme",
+        "Kendi çapında büyük ölçekli projelerde aktif çalışma",
+        "Authentication ve backend servisleriyle entegrasyon"
+      ]
+    },
+
+    "WebGPU": {
+      "level": "Temel / Orta",
+      "details": [
+        "Unity ile WebGPU üzerinden oyun geliştirme",
+        "Staj kapsamında aktif kullanım"
+      ]
+    },
+
+    "Backend": {
+      "level": "Temel",
+      "details": [
+        "Basit API kullanımı",
+        "Authentication sistemleri",
+        "Firebase ve Supabase ile çalışma"
+      ]
+    }
+  },
+
+  "experience": [
+    {
+      "title": "Game Development Intern",
+      "location": "Tunus",
+      "duration": "Yaklaşık 2 ay",
+      "description": "Tunus'ta bir oyun şirketinde staj yaptı. Unity kullanarak WebGPU üzerinden çalışan küçük ölçekli bir oyun geliştirdi.",
+      "certificate": true
+    },
+    {
+      "title": "Computer Graphics Çalışmaları",
+      "description": "OpenGL ile 3D objeler, ışıklandırma ve gölgelendirme (shadow mapping) üzerine projeler geliştirdi."
+    },
+    {
+      "title": "Kişisel Projeler",
+      "description": "Kendi oyun motoru denemeleri, Unity oyun projeleri ve Flutter ile mobil uygulamalar."
+    }
+  ],
+
+  "personality": [
+    "Analitik düşünür",
+    "Detaycı",
+    "Kendi kendine öğrenebilen",
+    "Girişimci",
+    "Problem çözmeye odaklı"
+  ],
+
+  "interests": [
+    "Oyun geliştirme",
+    "Computer Graphics",
+    "Teknoloji videoları",
+    "Startup ve girişimcilik"
+  ],
+
+  "certifications": [
+    "Tunus'ta oyun şirketinde yapılan staja ait resmi sertifika"
+  ],
+
+  "limits": [
+    "Kurumsal ölçekte uzun süreli backend deneyimi yok",
+    "Büyük ekiplerde uzun dönem çalışma tecrübesi sınırlı"
+  ]
+}
