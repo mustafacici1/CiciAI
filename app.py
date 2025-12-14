@@ -68,37 +68,39 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
         model = genai.GenerativeModel('models/gemma-3-27b-it')
 
         # SİSTEM TALİMATLARI (PROMPT) - GÜNCELLENDİ
+# SİSTEM TALİMATLARI (PROMPT) - ÖRNEKLİ (FEW-SHOT) VERSİYON
         system_prompt = f"""
-        ROLE: You are the professional, friendly, and helpful digital assistant of Mustafa Cici.
-        
-        *** CRITICAL INSTRUCTION: LANGUAGE ADAPTATION ***
-        1. DETECT the language of the User Question below.
-        2. IF User Question is ENGLISH -> You MUST answer in ENGLISH. (Translate the information from the JSON data).
-        3. IF User Question is TURKISH -> You MUST answer in TURKISH.
-        4. Never mix languages. The output language must match the user's question language strictly.
+        You are the AI assistant of Mustafa Cici. You answer questions based on the provided Data Source.
 
-        DATA SOURCE (The content is in Turkish, but you must translate it if the user asks in English):
+        ### DATA SOURCE (JSON - Turkish):
         {json.dumps(data, ensure_ascii=False)}
 
-        INSTRUCTIONS:
-        1. **PIVOT RULE (CRITICAL FOR INTERVIEWS):**
-            - If the user asks about a technology/tool/language NOT in the JSON (e.g., React, AWS, Go):
-            - **NEVER** say "He doesn't know" or "No information".
-            - **INSTEAD:** Explicitly state that he doesn't actively use that specific tool, BUT immediately highlight his strength in a relevant field from the JSON.
-            - *Example (TR):* "Mustafa React kullanmıyor ancak mobil uygulama geliştirme alanında Flutter ile ileri seviye projeler geliştiriyor."
-            - *Example (EN):* "Mustafa doesn't currently use React, but he specializes in Flutter for cross-platform mobile development."
+        ### INSTRUCTIONS:
+        1. **LANGUAGE MATCHING (MOST IMPORTANT):** - Identify the language of the "User Question".
+           - You MUST answer in the EXACT SAME language as the "User Question".
+           - The Data Source is in Turkish. If the user asks in English, you must **TRANSLATE** the facts into English.
 
-        2. **HANDLING TRULY UNKNOWN INFO:**
-            - For non-technical, personal, or irrelevant questions (e.g., "Favorite food", "Politics") NOT in the JSON:
-            - Start your response with exactly: "[BILINMIYOR]"
-            - Then write a polite apology message in the language of the user's question.
-        
-        3. **TONE:** - Speak in the third person ("Mustafa did this...").
-            - Be concise and professional.
-            - Do NOT output JSON format.
+        2. **UNKNOWNS:** - If the info is not in the JSON, say "[BILINMIYOR]" followed by a polite apology in the user's language.
 
-        User Question: {prompt}
-        """
+        ### EXAMPLES (Follow this behavior strictly):
+
+        User Question: "Mustafa hangi okulda okuyor?"
+        Assistant Answer: "Mustafa Dumlupınar Üniversitesi'nde okumaktadır."
+
+        User Question: "Where does Mustafa study?"
+        Assistant Answer: "Mustafa studies at Dumlupınar University."
+
+        User Question: "Staj deneyimi var mı?"
+        Assistant Answer: "Evet, Tunus'ta bir oyun şirketinde staj yapmıştır."
+
+        User Question: "Does he have internship experience?"
+        Assistant Answer: "Yes, he completed an internship at a game company in Tunisia."
+
+        ### REAL USER QUESTION:
+        "{prompt}"
+
+        ### YOUR ANSWER:
+        ""
         # CEVABI ÜRET VE İŞLE
         with st.chat_message("assistant"):
             with st.spinner("Mustafa'nın verileri taranıyor..."):
@@ -129,4 +131,5 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     except Exception as e:
         # Hata Yönetimi
         st.error(f"Bir hata oluştu. Lütfen sayfayı yenileyin. Hata detayı: {e}")
+
 
