@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import google.generativeai as genai
-import urllib.parse # Mail linki ve Türkçe karakterler için gerekli
+import urllib.parse
 
 # --- 1. SAYFA AYARLARI ---
 st.set_page_config(
@@ -10,7 +10,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# --- 2. VERİ YÜKLEME FONKSİYONU ---
+# --- 2. VERİ YÜKLEME ---
 @st.cache_data
 def load_data():
     try:
@@ -22,14 +22,14 @@ def load_data():
 
 data = load_data()
 
-# --- 3. API ANAHTARINI GİZLİ KASADAN ÇEKME ---
+# --- 3. API ANAHTARI KONTROLÜ ---
 try:
     api_key = st.secrets["GOOGLE_API_KEY"]
 except:
-    st.warning("API Anahtarı bulunamadı! Eğer yerel bilgisayarda çalışıyorsan secrets.toml dosyası, Streamlit Cloud'da isen Secrets ayarları eksik.")
+    st.warning("API Anahtarı bulunamadı! Streamlit Secrets ayarlarını kontrol et.")
     st.stop()
 
-# --- 4. YAN MENÜ (SIDEBAR) ---
+# --- 4. YAN MENÜ ---
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/4712/4712027.png", width=100)
     st.header("Hakkında")
@@ -37,32 +37,34 @@ with st.sidebar:
     st.write("💻 **Geliştirici:** Mustafa Cici")
     st.caption("© 2025 Mustafa Cici AI")
 
-# --- 5. ANA EKRAN BAŞLIĞI ---
+# --- 5. ANA EKRAN ---
 st.title("🤖 Mustafa Cici Asistanı")
 st.write("Merhaba! Ben Mustafa'nın dijital versiyonuyum. CV'm, Tunus ve T7DGaming stajlarım veya geliştirdiğim projeler hakkında bana dilediğini sorabilirsin.")
 
-# --- 6. SOHBET GEÇMİŞİNİ HATIRLA ---
+# --- 6. GEÇMİŞİ YÜKLE ---
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Eski mesajları ekrana yeniden çiz
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-# --- 7. KULLANICI SORUSU VE CEVAP MANTIĞI ---
+# --- 7. KULLANICI GİRDİSİ VE CEVAP ---
 if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     
-    # Kullanıcı mesajını ekrana bas
+    # Kullanıcı mesajını göster
     with st.chat_message("user"):
         st.write(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     try:
-        # Gemini Modelini Hazırla
+        # Gemini Ayarları
         genai.configure(api_key=api_key)
+        
+        # MODEL SEÇİMİ: Listenizdeki en güncel modeli kullanıyoruz
         model = genai.GenerativeModel('gemini-flash-latest')
-        # --- YAPAY ZEKA BEYNİ (SİSTEM MESAJI) ---
+
+        # SİSTEM TALİMATLARI (PROMPT)
         system_prompt = f"""
         ROLE: You are the professional, friendly, and helpful digital assistant of Mustafa Cici.
         
@@ -92,36 +94,33 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
         User Question: {prompt}
         """
 
-        # --- CEVABI AL VE İŞLE ---
+        # CEVABI ÜRET VE İŞLE
         with st.chat_message("assistant"):
             with st.spinner("Mustafa'nın verileri taranıyor..."):
                 response_obj = model.generate_content(system_prompt)
                 full_response = response_obj.text
                 
-                # Senaryo A: Bot cevabı bilmiyor (Kişisel/Alakasız Soru)
+                # Senaryo A: Bilinmeyen Bilgi
                 if "[BILINMIYOR]" in full_response:
                     clean_response = full_response.replace("[BILINMIYOR]", "")
                     st.write(clean_response)
                     
-                    # Mail Linki Oluştur
+                    # Mail Linki
                     subject = "Botun Cevaplayamadığı Soru"
                     body = f"Merhaba Mustafa,\n\nBotuna şu soruyu sordum ve cevaplayamadı:\n\n'{prompt}'\n\nBunu eklemeyi düşünebilirsin."
                     mail_link = f"mailto:mustafa.cici12@hotmail.com?subject={urllib.parse.quote(subject)}&body={urllib.parse.quote(body)}"
                     
-                    # Butonu Göster
+                    # Uyarı ve Buton
                     st.warning("Bu bilgi veri tabanımda yok. Mustafa'ya iletmek ister misin?")
                     st.link_button("📧 Soruyu Mustafa'ya Mail At", mail_link)
                     
-                    # Geçmişe kaydet
                     st.session_state.messages.append({"role": "assistant", "content": clean_response})
 
-                # Senaryo B: Bot cevabı biliyor (veya Pivot yapıyor)
+                # Senaryo B: Normal Cevap
                 else:
                     st.write(full_response)
                     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
     except Exception as e:
-        st.error(f"Bir hata oluştu. Lütfen sayfayı yenile. Hata detayı: {e}")
-
-
-
+        # Hata Yönetimi
+        st.error(f"Bir hata oluştu. Lütfen sayfayı yenileyin. Hata detayı: {e}")
