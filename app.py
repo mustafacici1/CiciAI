@@ -61,8 +61,8 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
         # Gemini Ayarları
         genai.configure(api_key=api_key)
         
-        # MODEL SEÇİMİ: Listenizdeki en güncel modeli kullanıyoruz
-        model = genai.GenerativeModel('gemini-flash-latest')
+
+        model = genai.GenerativeModel('gemini-1.5-flash')
 
         # SİSTEM TALİMATLARI (PROMPT)
         system_prompt = f"""
@@ -124,3 +124,4 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     except Exception as e:
         # Hata Yönetimi
         st.error(f"Bir hata oluştu. Lütfen sayfayı yenileyin. Hata detayı: {e}")
+
