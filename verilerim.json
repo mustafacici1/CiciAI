@@ -1,143 +1,270 @@
 {
-  "kimlik": {
-    "ad_soyad": "Mustafa Cici",
-    "unvan": "Bilgisayar Mühendisliği Öğrencisi & Oyun/Uygulama Geliştirici",
-    "konum": "Eskişehir / Tepebaşı",
-    "dogum_yeri": "Eskişehir",
-    "ozet": "Flutter, Web Geliştirme ve Bilgisayar Grafikleri konularında yetkin. Profesyonel yüzme geçmişine sahip, edebiyat ve felsefeye ilgili, disiplinli bir mühendis adayı.",
-    "iletisim": {
-      "email": "mustafa.cici12@hotmail.com",
-      "telefon": "+90 546 806 2248",
-      "github": "https://github.com/mustafacici1",
-      "portfolio": "https://mustafacici1.github.io/mustafacici/",
-      "linkedin": "https://www.linkedin.com/in/mustafacici/"
-    }
-  },
-
-  "kisisel_hayat": {
-    "aile_yapisi": {
-      "genel": "Orta düzey bir ailede büyüdü, iki kardeşler.",
-      "baba": "Emekli",
-      "anne": "Ev hanımı",
-      "kardes": "Ablası 27 yaşında, Turkish Technic'te (Türk Hava Yolları) çalışıyor."
+  "tr": {
+    "kimlik": {
+      "ad_soyad": "Mustafa Cici",
+      "unvan": "Bilgisayar Mühendisliği Öğrencisi & Oyun/Uygulama Geliştirici",
+      "konum": "Eskişehir / Tepebaşı",
+      "dogum_yeri": "Eskişehir",
+      "ozet": "Flutter, Web Geliştirme ve Bilgisayar Grafikleri konularında yetkin. Profesyonel yüzme geçmişine sahip, edebiyat ve felsefeye ilgili, disiplinli bir mühendis adayı.",
+      "iletisim": {
+        "email": "mustafa.cici12@hotmail.com",
+        "telefon": "+90 546 806 2248",
+        "github": "https://github.com/mustafacici1",
+        "portfolio": "https://mustafacici1.github.io/mustafacici/",
+        "linkedin": "https://www.linkedin.com/in/mustafacici/"
+      }
     },
-    "ilgi_alanlari": [
-      "Edebiyat (Okuma ve araştırma)",
-      "Felsefe",
-      "Teknoloji ve Girişimcilik"
+    "kisisel_hayat": {
+      "aile_yapisi": {
+        "genel": "Orta düzey bir ailede büyüdü, iki kardeşler.",
+        "baba": "Emekli",
+        "anne": "Ev hanımı",
+        "kardes": "Ablası 27 yaşında, Turkish Technic'te (Türk Hava Yolları) çalışıyor."
+      },
+      "ilgi_alanlari": ["Edebiyat (Okuma ve araştırma)", "Felsefe", "Teknoloji ve Girişimcilik"],
+      "spor_gecmisi": {
+        "brans": "Yüzme",
+        "seviye": "Profesyonel geçmişe sahip",
+        "kazanim": "Spor disiplini ve rekabet kültürü kazandırdı."
+      }
+    },
+    "egitim": {
+      "okul": "Dumlupınar Üniversitesi",
+      "bolum": "Bilgisayar Mühendisliği (3. Sınıf)",
+      "ortalama": "3.45 / 4.00",
+      "beklenen_mezuniyet": "2025"
+    },
+    "deneyimler": [
+      {
+        "kurum": "T7DGaming (Suudi Arabistan / Dubai)",
+        "pozisyon": "Stajyer (Oyun Geliştirme)",
+        "tarih": "2024 – Günümüz",
+        "detaylar": [
+          "Uluslararası bir ekiple Unity kullanarak hypercasual mobil oyun geliştiriyor.",
+          "Takım çalışması ve profesyonel oyun geliştirme süreçlerinde deneyim kazanıyor."
+        ]
+      },
+      {
+        "kurum": "Oyun Şirketi (Tunus)",
+        "pozisyon": "Game Development Intern",
+        "sure": "2 ay",
+        "detaylar": [
+          "Unity ve WebGPU teknolojileri üzerine çalışmalar yaptı.",
+          "Küçük ölçekli oyun projeleri geliştirdi.",
+          "Bu deneyim resmi sertifika ile belgelendi."
+        ]
+      },
+      {
+        "etkinlik": "Kütahya Hackathon 2024",
+        "rol": "Katılımcı",
+        "detay": "Yenilikçi bir mobil uygulama fikri geliştirdi ve jüriye sundu."
+      },
+      {
+        "etkinlik": "Kütahya GameJam 2024",
+        "rol": "Katılımcı",
+        "detay": "Kısıtlı süre altında bir ekiple beraber oyun tasarladı ve geliştirdi."
+      }
     ],
-    "spor_gecmisi": {
-      "brans": "Yüzme",
-      "seviye": "Profesyonel geçmişe sahip",
-      "kazanim": "Spor disiplini ve rekabet kültürü kazandırdı."
-    }
+    "teknik_beceriler": {
+      "diller": ["Flutter", "Python", "C++", "C#", "HTML", "CSS", "JavaScript", "Java"],
+      "araclar_ve_platformlar": ["Unity", "Firebase", "OpenCV", "Visual Studio", "GitHub", "Android Studio"],
+      "grafik_programlama": {
+        "teknolojiler": ["OpenGL", "WebGPU"],
+        "yetkinlikler": ["Shadow Mapping", "3D Sahne Oluşturma", "Işıklandırma ve Gölgelendirme"]
+      },
+      "kisisel_ozellikler": ["Problem Çözme", "Takım Çalışması", "İletişim", "Analitik Düşünme", "Girişimcilik", "Sporcu Disiplini"]
+    },
+    "projeler": [
+      {
+        "ad": "Moodairy",
+        "tur": "Mobil Uygulama (Flutter)",
+        "aciklama": "Günlük mod ve not takip uygulaması. İstatistiksel analizler ve bildirim özellikleri içerir.",
+        "link": "https://mustafacici1.github.io/MooDairyWeb/"
+      },
+      {
+        "ad": "Akıllı Kampüs",
+        "tur": "Mobil Uygulama (Java, Android Studio)",
+        "aciklama": "Hackathon projesi. Adım sayar ve haber akışı özelliklerini barındıran kampüs uygulaması. Firebase kullanıldı."
+      },
+      {
+        "ad": "Moment",
+        "tur": "Mobil Uygulama (Flutter)",
+        "aciklama": "Harita üzerinden aktivite paylaşımı ve mesajlaşma uygulaması."
+      },
+      {
+        "ad": "AirMax Web Arayüzü",
+        "tur": "Frontend",
+        "aciklama": "Bir HVAC (İklimlendirme) şirketi için geliştirilen web arayüzü.",
+        "link": "https://airmaxtr.com"
+      },
+      {
+        "ad": "Controller Studio Website",
+        "tur": "Frontend",
+        "aciklama": "Bir oyun şirketi için hazırlanan tanıtım web sitesi.",
+        "link": "https://controllerstudio.com"
+      },
+      {
+        "ad": "Teknofest Görüntü İşleme",
+        "tur": "Yapay Zeka (Python, OpenCV)",
+        "aciklama": "Bilgisayarlı görü (Computer Vision) yarışma projesi."
+      },
+      {
+        "ad": "Yangın Tespit Sistemi",
+        "tur": "Yapay Zeka (Python, OpenCV)",
+        "aciklama": "Görüntü tabanlı yangın tespiti yapan okul projesi."
+      },
+      {
+        "ad": "Kokteyl Tarifi Uygulaması",
+        "tur": "Web (API)",
+        "aciklama": "API kullanarak kokteyl tarifleri sunan web uygulaması.",
+        "link": "https://mustafacici1.github.io/kokteyl/"
+      },
+      {
+        "ad": "Futbolcu Mevki Tahmini",
+        "tur": "Web (Veri Analizi)",
+        "aciklama": "Futbolcu istatistiklerine göre mevki tahmini yapan uygulama.",
+        "link": "https://mustafacici1.github.io/futbolcu_tahmin/"
+      },
+      {
+        "ad": "Nirvana Website",
+        "tur": "Frontend",
+        "aciklama": "Kurumsal web sitesi tasarımı.",
+        "link": "https://mustafacici1.github.io/nirvanawebsite/"
+      }
+    ]
   },
-
-  "egitim": {
-    "okul": "Dumlupınar Üniversitesi",
-    "bolum": "Bilgisayar Mühendisliği (3. Sınıf)",
-    "ortalama": "3.45 / 4.00",
-    "beklenen_mezuniyet": "2025"
-  },
-
-  "deneyimler": [
-    {
-      "kurum": "T7DGaming (Suudi Arabistan / Dubai)",
-      "pozisyon": "Stajyer (Oyun Geliştirme)",
-      "tarih": "2024 – Günümüz",
-      "detaylar": [
-        "Uluslararası bir ekiple Unity kullanarak hypercasual mobil oyun geliştiriyor.",
-        "Takım çalışması ve profesyonel oyun geliştirme süreçlerinde deneyim kazanıyor."
-      ]
+  "en": {
+    "identity": {
+      "full_name": "Mustafa Cici",
+      "title": "Computer Engineering Student & Game/App Developer",
+      "location": "Eskişehir / Tepebaşı",
+      "birthplace": "Eskişehir",
+      "summary": "Proficient in Flutter, Web Development, and Computer Graphics. Has a professional swimming background, interested in literature and philosophy, and is a disciplined engineering candidate.",
+      "contact": {
+        "email": "mustafa.cici12@hotmail.com",
+        "phone": "+90 546 806 2248",
+        "github": "https://github.com/mustafacici1",
+        "portfolio": "https://mustafacici1.github.io/mustafacici/",
+        "linkedin": "https://www.linkedin.com/in/mustafacici/"
+      }
     },
-    {
-      "kurum": "Oyun Şirketi (Tunus)",
-      "pozisyon": "Game Development Intern",
-      "sure": "2 ay",
-      "detaylar": [
-        "Unity ve WebGPU teknolojileri üzerine çalışmalar yaptı.",
-        "Küçük ölçekli oyun projeleri geliştirdi.",
-        "Bu deneyim resmi sertifika ile belgelendi."
-      ]
+    "personal_life": {
+      "family_structure": {
+        "general": "Grew up in a middle-class family, has one sibling.",
+        "father": "Retired",
+        "mother": "Housewife",
+        "sibling": "Sister (27 years old) works at Turkish Technic (Turkish Airlines)."
+      },
+      "interests": ["Literature (Reading and research)", "Philosophy", "Technology and Entrepreneurship"],
+      "sports_background": {
+        "branch": "Swimming",
+        "level": "Professional background",
+        "gain": "Gained sports discipline and competitive culture."
+      }
     },
-    {
-      "etkinlik": "Kütahya Hackathon 2024",
-      "rol": "Katılımcı",
-      "detay": "Yenilikçi bir mobil uygulama fikri geliştirdi ve jüriye sundu."
+    "education": {
+      "school": "Dumlupınar University",
+      "department": "Computer Engineering (3rd Year)",
+      "gpa": "3.45 / 4.00",
+      "expected_graduation": "2025"
     },
-    {
-      "etkinlik": "Kütahya GameJam 2024",
-      "rol": "Katılımcı",
-      "detay": "Kısıtlı süre altında bir ekiple beraber oyun tasarladı ve geliştirdi."
-    }
-  ],
-
-  "teknik_beceriler": {
-    "diller": ["Flutter", "Python", "C++", "C#", "HTML", "CSS", "JavaScript", "Java"],
-    "araclar_ve_platformlar": ["Unity", "Firebase", "OpenCV", "Visual Studio", "GitHub", "Android Studio"],
-    "grafik_programlama": {
-      "teknolojiler": ["OpenGL", "WebGPU"],
-      "yetkinlikler": ["Shadow Mapping", "3D Sahne Oluşturma", "Işıklandırma ve Gölgelendirme"]
+    "experiences": [
+      {
+        "company": "T7DGaming (Saudi Arabia / Dubai)",
+        "position": "Intern (Game Development)",
+        "date": "2024 – Present",
+        "details": [
+          "Developing hypercasual mobile games using Unity with an international team.",
+          "Gaining experience in teamwork and professional game development processes."
+        ]
+      },
+      {
+        "company": "Game Company (Tunisia)",
+        "position": "Game Development Intern",
+        "duration": "2 months",
+        "details": [
+          "Worked on Unity and WebGPU technologies.",
+          "Developed small-scale game projects.",
+          "This experience is documented with an official certificate."
+        ]
+      },
+      {
+        "event": "Kütahya Hackathon 2024",
+        "role": "Participant",
+        "detail": "Developed an innovative mobile app idea and presented it to the jury."
+      },
+      {
+        "event": "Kütahya GameJam 2024",
+        "role": "Participant",
+        "detail": "Designed and developed a game with a team under limited time."
+      }
+    ],
+    "technical_skills": {
+      "languages": ["Flutter", "Python", "C++", "C#", "HTML", "CSS", "JavaScript", "Java"],
+      "tools_and_platforms": ["Unity", "Firebase", "OpenCV", "Visual Studio", "GitHub", "Android Studio"],
+      "graphics_programming": {
+        "technologies": ["OpenGL", "WebGPU"],
+        "competencies": ["Shadow Mapping", "3D Scene Creation", "Lighting and Shading"]
+      },
+      "personal_traits": ["Problem Solving", "Teamwork", "Communication", "Analytical Thinking", "Entrepreneurship", "Sports Discipline"]
     },
-    "kisisel_ozellikler": ["Problem Çözme", "Takım Çalışması", "İletişim", "Analitik Düşünme", "Girişimcilik", "Sporcu Disiplini"]
-  },
-
-  "projeler": [
-    {
-      "ad": "Moodairy",
-      "tur": "Mobil Uygulama (Flutter)",
-      "aciklama": "Günlük mod ve not takip uygulaması. İstatistiksel analizler ve bildirim özellikleri içerir.",
-      "link": "https://mustafacici1.github.io/MooDairyWeb/"
-    },
-    {
-      "ad": "Akıllı Kampüs",
-      "tur": "Mobil Uygulama (Java, Android Studio)",
-      "aciklama": "Hackathon projesi. Adım sayar ve haber akışı özelliklerini barındıran kampüs uygulaması. Firebase kullanıldı."
-    },
-    {
-      "ad": "Moment",
-      "tur": "Mobil Uygulama (Flutter)",
-      "aciklama": "Harita üzerinden aktivite paylaşımı ve mesajlaşma uygulaması."
-    },
-    {
-      "ad": "AirMax Web Arayüzü",
-      "tur": "Frontend",
-      "aciklama": "Bir HVAC (İklimlendirme) şirketi için geliştirilen web arayüzü.",
-      "link": "https://airmaxtr.com"
-    },
-    {
-      "ad": "Controller Studio Website",
-      "tur": "Frontend",
-      "aciklama": "Bir oyun şirketi için hazırlanan tanıtım web sitesi.",
-      "link": "https://controllerstudio.com"
-    },
-    {
-      "ad": "Teknofest Görüntü İşleme",
-      "tur": "Yapay Zeka (Python, OpenCV)",
-      "aciklama": "Bilgisayarlı görü (Computer Vision) yarışma projesi."
-    },
-    {
-      "ad": "Yangın Tespit Sistemi",
-      "tur": "Yapay Zeka (Python, OpenCV)",
-      "aciklama": "Görüntü tabanlı yangın tespiti yapan okul projesi."
-    },
-    {
-      "ad": "Kokteyl Tarifi Uygulaması",
-      "tur": "Web (API)",
-      "aciklama": "API kullanarak kokteyl tarifleri sunan web uygulaması.",
-      "link": "https://mustafacici1.github.io/kokteyl/"
-    },
-    {
-      "ad": "Futbolcu Mevki Tahmini",
-      "tur": "Web (Veri Analizi)",
-      "aciklama": "Futbolcu istatistiklerine göre mevki tahmini yapan uygulama.",
-      "link": "https://mustafacici1.github.io/futbolcu_tahmin/"
-    },
-    {
-      "ad": "Nirvana Website",
-      "tur": "Frontend",
-      "aciklama": "Kurumsal web sitesi tasarımı.",
-      "link": "https://mustafacici1.github.io/nirvanawebsite/"
-    }
-  ]
+    "projects": [
+      {
+        "name": "Moodairy",
+        "type": "Mobile App (Flutter)",
+        "description": "Daily mood and note tracking application. Includes statistical analysis and notification features.",
+        "link": "https://mustafacici1.github.io/MooDairyWeb/"
+      },
+      {
+        "name": "Smart Campus",
+        "type": "Mobile App (Java, Android Studio)",
+        "description": "Hackathon project. Campus application containing step counter and news feed features. Firebase was used."
+      },
+      {
+        "name": "Moment",
+        "type": "Mobile App (Flutter)",
+        "description": "Activity sharing and messaging application via map interface."
+      },
+      {
+        "name": "AirMax Web Interface",
+        "type": "Frontend",
+        "description": "Web interface developed for an HVAC (Air Conditioning) company.",
+        "link": "https://airmaxtr.com"
+      },
+      {
+        "name": "Controller Studio Website",
+        "type": "Frontend",
+        "description": "Promotional website prepared for a game company.",
+        "link": "https://controllerstudio.com"
+      },
+      {
+        "name": "Teknofest Image Processing",
+        "type": "AI (Python, OpenCV)",
+        "description": "Computer Vision competition project."
+      },
+      {
+        "name": "Fire Detection System",
+        "type": "AI (Python, OpenCV)",
+        "description": "Image-based fire detection school project."
+      },
+      {
+        "name": "Cocktail Recipe App",
+        "type": "Web (API)",
+        "description": "Web application offering cocktail recipes using an API.",
+        "link": "https://mustafacici1.github.io/kokteyl/"
+      },
+      {
+        "name": "Footballer Position Prediction",
+        "type": "Web (Data Analysis)",
+        "description": "Application predicting player positions based on statistics.",
+        "link": "https://mustafacici1.github.io/futbolcu_tahmin/"
+      },
+      {
+        "name": "Nirvana Website",
+        "type": "Frontend",
+        "description": "Corporate website design.",
+        "link": "https://mustafacici1.github.io/nirvanawebsite/"
+      }
+    ]
+  }
 }
