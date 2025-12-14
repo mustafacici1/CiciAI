@@ -13,154 +13,302 @@ st.set_page_config(
 # --- MODERN CSS STILI ---
 st.markdown("""
 <style>
-    /* Ana tema renkleri */
+    /* Google Fonts Import */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    /* Ana tema renkleri - Daha soft ve modern */
     :root {
         --primary-color: #6366f1;
         --secondary-color: #8b5cf6;
-        --accent-color: #06b6d4;
-        --bg-dark: #0f172a;
-        --bg-card: #1e293b;
+        --accent-color: #0ea5e9;
+        --bg-primary: #0a0e1a;
+        --bg-secondary: #151825;
+        --bg-tertiary: #1f2333;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --border-color: rgba(99, 102, 241, 0.15);
     }
     
-    /* Genel arka plan */
+    /* Genel stil sıfırlama */
+    * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    /* Genel arka plan - Daha yumuşak gradient */
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1a1f35 100%);
+        color: var(--text-primary);
     }
     
-    /* Başlık stili */
+    /* Ana container padding */
+    .block-container {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+        max-width: 900px !important;
+    }
+    
+    /* Başlık stili - Daha şık ve modern */
     h1 {
-        background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        background: linear-gradient(120deg, #a78bfa 0%, #6366f1 40%, #0ea5e9 80%, #06b6d4 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        font-size: 2.5rem !important;
+        font-size: 3rem !important;
         font-weight: 800 !important;
         margin-bottom: 0.5rem !important;
         text-align: center;
+        letter-spacing: -0.02em !important;
+        line-height: 1.2 !important;
     }
     
-    /* Ana açıklama metni */
+    /* Ana açıklama metni - Daha clean */
     .main-description {
         text-align: center;
-        color: #94a3b8;
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin: 1.5rem auto;
-        max-width: 600px;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 12px;
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.7;
+        margin: 2rem auto 3rem;
+        max-width: 650px;
+        padding: 1.75rem 2rem;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
     
-    /* Chat mesaj kutuları */
+    /* Chat mesaj kutuları - Daha modern ve temiz */
     .stChatMessage {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border-radius: 16px !important;
-        border: 1px solid rgba(99, 102, 241, 0.2) !important;
-        padding: 1.2rem !important;
-        margin: 0.8rem 0 !important;
+        background: var(--bg-tertiary) !important;
+        border-radius: 20px !important;
+        border: 1px solid var(--border-color) !important;
+        padding: 1.5rem !important;
+        margin: 1rem 0 !important;
         backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* Kullanıcı mesajları */
+    .stChatMessage:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    /* Kullanıcı mesajları - Gradient border efekti */
     .stChatMessage[data-testid="user-message"] {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%) !important;
-        border-color: rgba(99, 102, 241, 0.4) !important;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%) !important;
+        border: 1px solid rgba(139, 92, 246, 0.25) !important;
     }
     
     /* Asistan mesajları */
     .stChatMessage[data-testid="assistant-message"] {
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%) !important;
-        border-color: rgba(6, 182, 212, 0.3) !important;
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.06) 0%, rgba(99, 102, 241, 0.06) 100%) !important;
+        border: 1px solid rgba(14, 165, 233, 0.2) !important;
     }
     
-    /* Input alanı */
+    /* Chat mesaj içerik */
+    .stChatMessage p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-primary);
+        margin: 0;
+    }
+    
+    /* Input alanı - Daha temiz */
     .stChatInputContainer {
-        border-top: 1px solid rgba(99, 102, 241, 0.2) !important;
-        padding-top: 1.5rem !important;
-        background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
+        border-top: 1px solid var(--border-color) !important;
+        padding-top: 2rem !important;
+        background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 26, 0.9) 50%);
+        backdrop-filter: blur(20px);
     }
     
-    /* Sidebar */
+    .stChatInput textarea {
+        background: var(--bg-tertiary) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 16px !important;
+        color: var(--text-primary) !important;
+        font-size: 1rem !important;
+        padding: 1rem 1.25rem !important;
+        transition: all 0.3s ease;
+    }
+    
+    .stChatInput textarea:focus {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+    }
+    
+    /* Sidebar - Daha modern ve temiz */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-        border-right: 1px solid rgba(99, 102, 241, 0.2);
+        background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        border-right: 1px solid var(--border-color);
     }
     
     [data-testid="stSidebar"] .block-container {
-        padding-top: 2rem;
+        padding-top: 2.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
     
     /* Sidebar başlık */
     [data-testid="stSidebar"] h2 {
-        color: #f1f5f9;
-        font-size: 1.5rem;
+        color: var(--text-primary);
+        font-size: 1.35rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.01em;
     }
     
-    /* Info kutusu */
+    /* Info kutusu - Daha soft */
     .stAlert {
-        background: rgba(99, 102, 241, 0.1) !important;
-        border: 1px solid rgba(99, 102, 241, 0.3) !important;
-        border-radius: 12px !important;
-        color: #e2e8f0 !important;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%) !important;
+        border: 1px solid rgba(99, 102, 241, 0.25) !important;
+        border-radius: 16px !important;
+        color: var(--text-primary) !important;
+        padding: 1rem 1.25rem !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
     }
     
     /* Warning kutusu */
     .stWarning {
-        background: rgba(251, 191, 36, 0.1) !important;
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.08) 0%, rgba(245, 158, 11, 0.08) 100%) !important;
         border: 1px solid rgba(251, 191, 36, 0.3) !important;
-        border-radius: 12px !important;
+        border-radius: 16px !important;
+        padding: 1rem 1.25rem !important;
+        font-size: 0.95rem !important;
     }
     
-    /* Link buton */
+    /* Link buton - Daha modern ve smooth */
     .stButton button {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%) !important;
         color: white !important;
         border: none !important;
-        border-radius: 10px !important;
-        padding: 0.6rem 1.5rem !important;
+        border-radius: 12px !important;
+        padding: 0.75rem 1.75rem !important;
         font-weight: 600 !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+        font-size: 0.95rem !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3), 0 2px 8px rgba(139, 92, 246, 0.2) !important;
+        letter-spacing: 0.01em !important;
     }
     
     .stButton button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+        transform: translateY(-3px) scale(1.02) !important;
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4), 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+        background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #c4b5fd 100%) !important;
     }
     
-    /* Spinner */
+    .stButton button:active {
+        transform: translateY(-1px) scale(0.98) !important;
+    }
+    
+    /* Spinner - Modern */
     .stSpinner > div {
-        border-top-color: #6366f1 !important;
+        border-top-color: var(--primary-color) !important;
+        border-right-color: var(--secondary-color) !important;
     }
     
-    /* Caption */
+    /* Caption - Daha soft */
     .caption {
         text-align: center;
         color: #64748b;
-        font-size: 0.85rem;
-        margin-top: 1rem;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        margin-top: 1.5rem;
+        opacity: 0.8;
     }
     
-    /* Sidebar profil kartı */
+    /* Sidebar profil kartı - Daha şık */
     .profile-card {
-        background: rgba(99, 102, 241, 0.1);
-        padding: 1.5rem;
-        border-radius: 16px;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+        border: 1px solid rgba(99, 102, 241, 0.2);
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
     }
     
-    /* Görüntü container */
+    .profile-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(99, 102, 241, 0.2);
+    }
+    
+    /* Görüntü container - İyileştirilmiş */
     .image-container {
         display: flex;
         justify-content: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 50%;
+        width: 140px;
+        height: 140px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+    }
+    
+    .image-container img {
+        border-radius: 50%;
+        filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
+    }
+    
+    /* Sidebar markdown text */
+    [data-testid="stSidebar"] .stMarkdown {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    [data-testid="stSidebar"] strong {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+    
+    /* Horizontal rule - Daha subtle */
+    [data-testid="stSidebar"] hr {
+        border: none;
+        height: 1px;
+        background: var(--border-color);
+        margin: 1.5rem 0;
+    }
+    
+    /* Scrollbar - Modern */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.3);
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 102, 241, 0.5);
+    }
+    
+    /* Responsive düzenlemeler */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.25rem !important;
+        }
+        
+        .main-description {
+            font-size: 0.95rem;
+            padding: 1.5rem;
+        }
+        
+        .stChatMessage {
+            padding: 1.25rem !important;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
