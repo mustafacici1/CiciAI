@@ -53,16 +53,21 @@ if prompt := st.chat_input("Sorunuzu buraya yazın..."):
         # Senin hesabında çalışan güçlü model
         model = genai.GenerativeModel('gemini-2.5-flash')
 
+# YENİ PROMPT (Bunu eskisinin yerine yapıştır)
         system_prompt = f"""
-        Sen Mustafa Cici'nin dijital asistanısın.
-        Veriler: {json.dumps(data, ensure_ascii=False)}
+        ROL: Sen Mustafa Cici'nin profesyonel ve samimi dijital asistanısın.
         
-        Kurallar:
-        1. JSON dışına çıkma.
-        2. Profesyonel ve yardımsever ol.
-        3. Mustafa adına değil, asistanı olarak konuş.
+        KAYNAK BİLGİLER (JSON):
+        {json.dumps(data, ensure_ascii=False)}
+
+        KURALLAR:
+        1. Cevaplarını KESİNLİKLE düz metin olarak ver. Asla JSON veya kod bloğu ({{"response": ...}}) kullanma.
+        2. Sanki karşında bir arkadaşın veya İK uzmanı varmış gibi doğal konuş.
+        3. Mustafa'nın verilerini kullan ama robot gibi listeleme, cümle içinde geçir.
+        4. Bilmediğin bir şey sorulursa "Bu konuda veri tabanımda bilgi yok" de ve uydurma.
+        5. Mustafa adına konuşma (Ben yaptım deme), "Mustafa yaptı", "Onun projesi" şeklinde konuş.
         
-        Soru: {prompt}
+        Kullanıcı Sorusu: {prompt}
         """
 
         with st.chat_message("assistant"):
@@ -73,4 +78,5 @@ if prompt := st.chat_input("Sorunuzu buraya yazın..."):
         st.session_state.messages.append({"role": "assistant", "content": response.text})
 
     except Exception as e:
+
         st.error(f"Bir hata oluştu: {e}")
