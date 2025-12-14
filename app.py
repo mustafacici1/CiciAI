@@ -5,7 +5,7 @@ import urllib.parse
 
 # --- 1. SAYFA AYARLARI ---
 st.set_page_config(
-    page_title="Mustafa Cici AI",
+    page_title="Cici AI",
     page_icon="🤖",
     layout="centered"
 )
@@ -22,46 +22,115 @@ st.markdown("""
         --bg-card: #1e293b;
     }
     
-    /* Genel arka plan */
-    .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    /* Animasyonlu arka plan */
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     
-    /* Başlık stili */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Genel arka plan - Animasyonlu gradient */
+    .stApp {
+        background: linear-gradient(-45deg, #0f172a, #1e293b, #312e81, #1e3a8a, #0f172a);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Parlayan noktalar arka plan efekti */
+    .stApp::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+        animation: pulse 8s ease-in-out infinite;
+    }
+    
+    /* Başlık stili - Animasyonlu */
     h1 {
         background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        background-size: 200% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        font-size: 2.5rem !important;
+        font-size: 2.8rem !important;
         font-weight: 800 !important;
         margin-bottom: 0.5rem !important;
         text-align: center;
+        animation: gradientShift 3s ease infinite, float 3s ease-in-out infinite;
+        letter-spacing: 2px;
+        text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
     }
     
-    /* Ana açıklama metni */
+    /* Ana açıklama metni - Animasyonlu */
     .main-description {
         text-align: center;
-        color: #94a3b8;
+        color: #cbd5e1;
         font-size: 1.1rem;
-        line-height: 1.6;
+        line-height: 1.8;
         margin: 1.5rem auto;
-        max-width: 600px;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 12px;
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        max-width: 650px;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+        animation: slideIn 0.8s ease-out;
+        transition: all 0.3s ease;
     }
     
-    /* Chat mesaj kutuları */
+    .main-description:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
+        border-color: rgba(99, 102, 241, 0.5);
+    }
+    
+    /* Chat mesaj kutuları - Gelişmiş animasyonlar */
     .stChatMessage {
         background: rgba(255, 255, 255, 0.05) !important;
-        border-radius: 16px !important;
+        border-radius: 20px !important;
         border: 1px solid rgba(99, 102, 241, 0.2) !important;
-        padding: 1.2rem !important;
-        margin: 0.8rem 0 !important;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem !important;
+        margin: 1rem 0 !important;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.5s ease-out;
+        transition: all 0.3s ease;
+    }
+    
+    .stChatMessage:hover {
+        transform: translateX(5px);
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
     }
     
     /* Kullanıcı mesajları */
@@ -83,10 +152,11 @@ st.markdown("""
         background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
     }
     
-    /* Sidebar */
+    /* Sidebar - Gelişmiş arka plan */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-        border-right: 1px solid rgba(99, 102, 241, 0.2);
+        background: linear-gradient(180deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+        border-right: 1px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: blur(10px);
     }
     
     [data-testid="stSidebar"] .block-container {
@@ -116,21 +186,42 @@ st.markdown("""
         border-radius: 12px !important;
     }
     
-    /* Link buton */
+    /* Link buton - Gelişmiş animasyon */
     .stButton button {
         background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
         color: white !important;
         border: none !important;
-        border-radius: 10px !important;
-        padding: 0.6rem 1.5rem !important;
+        border-radius: 12px !important;
+        padding: 0.7rem 1.8rem !important;
         font-weight: 600 !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+        transition: all 0.4s ease !important;
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stButton button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+    }
+    
+    .stButton button:hover::before {
+        left: 100%;
     }
     
     .stButton button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+        transform: translateY(-3px) scale(1.05) !important;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.6) !important;
+    }
+    
+    .stButton button:active {
+        transform: translateY(-1px) scale(1.02) !important;
     }
     
     /* Spinner */
@@ -146,21 +237,40 @@ st.markdown("""
         margin-top: 1rem;
     }
     
-    /* Sidebar profil kartı */
+    /* Sidebar profil kartı - Gelişmiş */
     .profile-card {
-        background: rgba(99, 102, 241, 0.1);
-        padding: 1.5rem;
-        border-radius: 16px;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(99, 102, 241, 0.4);
         text-align: center;
         margin-bottom: 1.5rem;
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
     }
     
-    /* Görüntü container */
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
+    }
+    
+    /* Görüntü container - Animasyonlu */
     .image-container {
         display: flex;
         justify-content: center;
         margin-bottom: 1rem;
+    }
+    
+    .image-container img {
+        animation: float 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
+        transition: all 0.3s ease;
+    }
+    
+    .image-container img:hover {
+        transform: scale(1.1) rotate(5deg);
+        filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.8));
     }
 </style>
 """, unsafe_allow_html=True)
@@ -202,16 +312,17 @@ with st.sidebar:
     
     st.markdown("---")
     
-    st.markdown('<p class="caption">© 2025 Mustafa Cici AI<br>Yapay Zeka Destekli Asistan</p>', unsafe_allow_html=True)
+    st.markdown('<p class="caption">© 2025 Cici AI<br>Yapay Zeka Destekli Asistan ✨</p>', unsafe_allow_html=True)
 
 # --- 5. ANA EKRAN ---
-st.title("🤖 Mustafa Cici Asistanı")
+st.title("🤖 Cici AI")
 
 st.markdown("""
 <div class="main-description">
-    Merhaba! Ben Mustafa'nın dijital versiyonuyum. 🚀<br>
-    CV'm, Tunus ve T7DGaming stajlarım veya geliştirdiğim projeler hakkında<br>
-    bana dilediğini sorabilirsin.
+    ✨ <strong>Merhaba! Ben Cici AI</strong> ✨<br>
+    Mustafa'nın dijital versiyonuyum. 🚀<br><br>
+    CV'si, Tunus ve T7DGaming stajları veya geliştirdiği projeler hakkında<br>
+    bana dilediğini sorabilirsin!
 </div>
 """, unsafe_allow_html=True)
 
