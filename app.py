@@ -61,9 +61,7 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
     try:
         # Gemini Modelini Hazırla
         genai.configure(api_key=api_key)
-        # Listende kesin var olan model
-        model = genai.GenerativeModel('gemini-2.0-flash')
-
+        model = genai.GenerativeModel('gemini-flash-latest')
         # --- YAPAY ZEKA BEYNİ (SİSTEM MESAJI) ---
         system_prompt = f"""
         ROLE: You are the professional, friendly, and helpful digital assistant of Mustafa Cici.
@@ -124,5 +122,6 @@ if prompt := st.chat_input("Mustafa hakkında ne merak ediyorsun?"):
 
     except Exception as e:
         st.error(f"Bir hata oluştu. Lütfen sayfayı yenile. Hata detayı: {e}")
+
 
 
